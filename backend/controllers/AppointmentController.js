@@ -3,17 +3,20 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Appointment = require('../models/Appointments');
 const Doctor = require('../models/Doctors');
+const dotenv=require('dotenv')
 
+dotenv.config()
 
 function authMiddleware(req, res, next) {
   try {
     const header = req.headers.authorization;
+   
     if (!header || !header.startsWith("Bearer ")) {
       return res.status(401).json({ message: "No token provided" });
     }
 
     const token = header.split(" ")[1];
-    const decoded = jwt.verify(token, "mysecretkey"); 
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); 
 
     req.user = decoded;
     next();
@@ -53,6 +56,7 @@ router.post('/', authMiddleware, patientMiddleware, async (req, res) => {
       date: { $gte: startOfDay, $lt: endOfDay },
       slot
     });
+
     if (existing) {
       return res.json({ message: "Slot already booked for this date!" });
     }
