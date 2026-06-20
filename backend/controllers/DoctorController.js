@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Doctor = require('../models/Doctors');
-
+//Doctor Routes
 router.put('/:userId', async (req, res) => {
   try {
     const { speciality, experience, fees, availableSlots } = req.body;
