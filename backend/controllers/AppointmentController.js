@@ -5,8 +5,9 @@ const Appointment = require('../models/Appointments');
 const Doctor = require('../models/Doctors');
 const dotenv=require('dotenv')
 
-dotenv.config()
+dotenv.config();
 
+//Appointment Routes
 function authMiddleware(req, res, next) {
   try {
     const header = req.headers.authorization;
