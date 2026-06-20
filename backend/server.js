@@ -8,12 +8,13 @@ const DoctorRoutes=require('./controllers/DoctorController')
 
 dotenv.config()
 const app = express();
-
+//server.js
 app.use(cors());
 app.use(express.json());
 app.use('/user',UserRoutes)
 app.use('/appointments',AppointmentRoutes)
 app.use('/doctors',DoctorRoutes)
+
 
 mongoose.connect(process.env.MONGO_URI).then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
