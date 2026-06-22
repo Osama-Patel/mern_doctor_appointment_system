@@ -7,7 +7,6 @@ const User = require('../models/Users');
 const Doctor = require('../models/Doctors');
 
 dotenv.config()
-//User Routes
 router.get('/',async (req,res)=>{
     const data=await User.find()
     res.send(data)
