@@ -23,6 +23,7 @@ export default function BookAppointment() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Book Appointment
       const res = await axios.post("http://localhost:3000/appointments", form, {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       });
