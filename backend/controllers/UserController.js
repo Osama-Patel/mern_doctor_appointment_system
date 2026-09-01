@@ -22,7 +22,7 @@ router.get("/doctor", async (req, res) => {
   }
 });
 
-
+// Register
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password, role, speciality, experience, fees, availableSlots } = req.body;
@@ -49,6 +49,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// Login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
